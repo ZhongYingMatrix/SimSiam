@@ -1,0 +1,23 @@
+python linear_eval.py \
+--eval_from outputs/cifar10_experiment/simsiam-cifar10-epoch800.pth \
+--dataset cifar10 \
+--data_dir data/ \
+--download \
+--image_size 32 \
+--model simsiam \
+--proj_layers 2 \
+--backbone resnet18 \
+--optimizer sgd \
+--weight_decay 0.0 \
+--momentum 0.9 \
+--warmup_epoch 10 \
+--warmup_epoch 0 \
+--warmup_lr 0 \
+--base_lr 30.0 \
+--final_lr 0 \
+--num_epochs 30 \
+--batch_size 256 \
+--head_tail_accuracy \
+--hide_progress \
+--output_dir outputs/cifar10_experiment/ \
+# --stop_at_epoch 800 \

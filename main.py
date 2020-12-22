@@ -8,7 +8,7 @@ from tqdm import tqdm
 from configs import get_args
 from augmentations import get_aug
 from models import get_model
-from tools import AverageMeter, PlotLogger
+from tools import AverageMeter, PlotLogger, ToDevice
 from datasets import get_dataset
 from optimizers import get_optimizer, LR_Scheduler
 from linear_eval import main as linear_eval
@@ -77,7 +77,7 @@ def main(args):
         for idx, ((images1, images2), labels) in enumerate(local_progress):
 
             model.zero_grad()
-            loss = model.forward(images1.to(args.device), images2.to(args.device))
+            loss = model.forward(ToDevice(images1, args.device), ToDevice(images2, args.device))
             loss.backward()
             optimizer.step()
             loss_meter.update(loss.item())

@@ -1,3 +1,4 @@
+from .pixsiam import PixSiam
 from .simsiam import SimSiam
 from .byol import BYOL
 from .simclr import SimCLR
@@ -24,6 +25,8 @@ def get_model(name, backbone):
         model = SimCLR(get_backbone(backbone))
     elif name == 'swav':
         raise NotImplementedError
+    elif name == 'pixsiam':
+        model =  PixSiam()  # TODO backbone and FPN split
     else:
         raise NotImplementedError
     return model
